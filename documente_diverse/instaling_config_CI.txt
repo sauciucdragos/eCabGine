@@ -1,0 +1,30 @@
+Instalarea si configurarea CodeIgniter
+
+NOTA in sintalarea pe care am facut-o in directorul assets este instlalat bootstrap si Jquery si fisierul style.css 
+
+1  copiati fisierul ecabgine din git dev in directorul www.sau htdoc (in funtie de ce server aveti)
+2. intrati in  directorul C:/...\ecabgine\application\config
+3. deschideti fisierul database.php si updatati datele de conectatre conform serverului pe care il aveti;
+
+$db['default'] = array(
+	'dsn'	=> '',
+	'hostname' => 'localhost',
+	'username' => 'root',
+	'password' => 'root',
+	'database' => 'ecabgine',
+
+NOTA: de fiecare data cand faceti pull de pe dev este bine sa verificati acest fisier si data sa va corespunda. 
+
+4. daca ati facut setarea CI singuti si nu ati lat-o cea pusa de  mine pe git va rog sa mai deschideti si fisierul autoload.php din config si sa schimbati urmatoarea linie
+$autoload['libraries'] = array();
+$autoload['libraries'] = array('database'); 
+
+5. creati baza de date cu numele ecabgine in phpmyadmin
+6. luati fisierele din directorul tabele
+7. creati si populati tabelele 
+
+8. pentru a folosi base_url(); trebuie mers in  directorul C:/...\ecabgine\application\config\autoload.php
+
+$autoload['helper'] = array('url');
+
+
