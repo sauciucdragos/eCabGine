@@ -1,9 +1,0 @@
-Code standards
-(mai mult un mod de a fi pe aceasi lungime de unda)
-
-1. Fiecare va crea o baza de date in myphpandmin cu numele aplicatiei ecabgine
-2. Tabelele vor avea acelasi nume conform task-ului ales/primit. Ex. task = users rezulta tabel = users
-3. Modul de denumire a fisierelor:
-	- controller-ul va avea numele conform task-ului  ex. users.php
-	- model-ul va avea numele conform task-ului la care se adauga talp model ex. users_model
-	- view va avea numele conform task-ului la care se adauga talp view ex. users_view.php
