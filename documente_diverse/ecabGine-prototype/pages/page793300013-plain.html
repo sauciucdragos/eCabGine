@@ -1,0 +1,160 @@
+<!DOCTYPE html><html xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.w3.org/1999/xhtml"><head><title>Login Page - Pidoco° - Prototype Test</title><style>
+					@font-face {
+						font-family: 'Glyphicons';
+						src: url('../resources/fonts/glyphicons-regular.eot');
+						src: url('../resources/fonts/glyphicons-regular.eot?#iefix') format('eot'), url('../resources/fonts/glyphicons-regular.woff') format('woff'), url('../resources/fonts/glyphicons-regular.ttf') format('truetype');
+						font-weight: normal;
+						font-style: normal;
+					}
+					
+					@font-face {
+						font-family: 'Pidoco Android';
+						src: url('../resources/fonts/androidiconfont.eot');
+						src: url('../resources/fonts/androidiconfont.eot?#iefix') format('eot'), url('../resources/fonts/androidiconfont.woff') format('woff'), url('../resources/fonts/androidiconfont.ttf') format('truetype');
+						font-weight: normal;
+						font-style: normal;
+					}
+
+					/* Critical CSS */
+					.pidoco .p-Preview {
+						display: flex;
+						flex-direction: column;
+						flex-wrap: nowrap;
+						align-items: flex-start;
+						height: 100%;
+					}
+
+					.pidoco .p-Preview-prototype {
+						margin: auto;
+					}
+				</style><link rel="preload" type="text/css" href="../resources/simulation-assets/version-217/result/css/result-min-217.css" as="style" onload="this.onload=null;this.rel='stylesheet'"></link><link rel="preload" type="text/css" href="../resources/yui/container/assets/skins/sam/container.css" as="style" onload="this.onload=null;this.rel='stylesheet'"></link><link rel="preload" type="text/css" href="../resources/yui/calendar/assets/skins/sam/calendar.css" as="style" onload="this.onload=null;this.rel='stylesheet'"></link><link rel="preload" type="text/css" href="../resources/yui/menu/assets/skins/sam/menu.css" as="style" onload="this.onload=null;this.rel='stylesheet'"></link><link rel="preload" type="text/css" href="../resources/yui/autocomplete/assets/skins/sam/autocomplete.css" as="style" onload="this.onload=null;this.rel='stylesheet'"></link><script type="text/javascript">
+						
+							/*! loadCSS rel=preload polyfill. [c]2017 Filament Group, Inc. MIT License */
+							!function(n){"use strict";n.loadCSS||(n.loadCSS=function(){});var o=loadCSS.relpreload={};if(o.support=function(){var e;try{e=n.document.createElement("link").relList.supports("preload")}catch(t){e=!1}return function(){return e}}(),o.bindMediaToggle=function(t){var e=t.media||"all";function a(){t.media=e}t.addEventListener?t.addEventListener("load",a):t.attachEvent&&t.attachEvent("onload",a),setTimeout(function(){t.rel="stylesheet",t.media="only x"}),setTimeout(a,3e3)},o.poly=function(){if(!o.support())for(var t=n.document.getElementsByTagName("link"),e=0;e<t.length;e++){var a=t[e];"preload"!==a.rel||"style"!==a.getAttribute("as")||a.getAttribute("data-loadcss")||(a.setAttribute("data-loadcss",!0),o.bindMediaToggle(a))}},!o.support()){o.poly();var t=n.setInterval(o.poly,500);n.addEventListener?n.addEventListener("load",function(){o.poly(),n.clearInterval(t)}):n.attachEvent&&n.attachEvent("onload",function(){o.poly(),n.clearInterval(t)})}"undefined"!=typeof exports?exports.loadCSS=loadCSS:n.loadCSS=loadCSS}("undefined"!=typeof global?global:this);
+						
+					</script><script type="text/javascript">
+					var rabbit = {
+						parameters: {
+						}
+					};
+					var pidoco = {};
+					
+					rabbit.parameters.codeVersion = '217';
+					rabbit.parameters.uid = 'anonymous';
+					rabbit.parameters.sentryDsn = '';
+					rabbit.parameters.sentryEnvironmentPrefix = '';
+					rabbit.prototypeType = '';
+				</script><script xmlns="" type="text/javascript">Ext = {util:{}};</script><script xmlns="" type="text/javascript" src="../resources/simulation-assets/version-217/result/scripts/script.js"></script><script xmlns="" type="text/javascript" src="../resources/simulation-assets/version-217/result/scripts/lang/en.js"></script><script type="text/javascript">
+					rabbit.result.manager.currentPageNr = 'page793300013';
+					rabbit.result.manager.currentPrototypeId = '280160';
+					rabbit.result.manager.baseUrl = '../resources/view/280160';
+					rabbit.result.lang = 'en';
+					rabbit.result.manager.urlPattern = 'null-plain.html';
+					rabbit.result.manager.currentRole = '';
+					rabbit.result.manager.isExport = true;
+					rabbit.parameters.isApi = false;
+					rabbit.parameters.isAnonymous = false;
+					rabbit.parameters.showFrame = true;
+					rabbit.parameters.fitScreen = true;
+					rabbit.parameters.isInvitation = false;
+					rabbit.parameters.userPrefs = {};
+					rabbit.parameters.prototypePrefs = {};
+					rabbit.parameters.viewMode = 'view';
+					rabbit.parameters.fontFamily = 'none';
+					rabbit.parameters.exportSuffixFilename = 'plain';
+					
+					
+					_.mixin(s.exports());
+					
+				</script><style type="text/css">
+					.repository.during-transition {
+						background-image: none !important;
+					}
+					
+	
+		body[data-current-page-id="page793300013"] .border-wrapper,
+		body[data-current-page-id="page793300013"] .simulation-container {
+			width:1200px;
+		}
+		
+		body.has-frame[data-current-page-id="page793300013"] .border-wrapper,
+		body.has-frame[data-current-page-id="page793300013"] .simulation-container {
+			height:800px;
+		}
+		
+		body[data-current-page-id="page793300013"] .svg-border-1200-800 {
+			display: block !important;
+		}
+		
+		body[data-current-page-id="page793300013"] .border-wrapper .border-div {
+			width:1200px;
+			height:800px;
+		}
+	</style><link rel="shortcut icon" type="image/x-icon" href="../resources/images/favicon.ico"></link></head><body class="p-Simulation--web p-Simulation--hasBanner plain-none plain pidoco browser-non-ie  no-api-call " data-current-page-id="page793300013" onload=""><script type="text/javascript">
+					$(document).ready(function(){
+						Raven.context(function () {
+
+							if (!rabbit.data) {
+								rabbit.data = {};
+							}
+							if (!rabbit.data.raw) {
+								rabbit.data.raw = {};
+							}
+							rabbit.data.raw = {
+								
+									folders:{
+										
+									},
+									pages:{
+										"page793300013": 
+										
+		{
+			"id": "page793300013",
+			"name": "Login Page",
+			"layers": {
+				
+			},
+			"image":"",
+			"width":1200,
+			"height":800,
+			"parentFolder": "",
+			"frame": "custom",
+			"frameOrientation": "custom"
+		}
+	
+									}
+								
+							}
+					
+							rabbit.result.manager.init('page793300013', '', 'non-ie', false);
+						});
+					});
+				</script><div id="mode" style="display:none">plain</div><div id="mode" style="display:none">plain</div><div id="pageNames" style="display: none">{"page477764928":"page477764928-plain.html","page793300013":"page793300013-plain.html","page736285591":"page736285591-plain.html","page604403334":"page604403334-plain.html","page303160628":"page303160628-plain.html"}</div><svg style="position: absolute; top: 0px; left:0px;width:0px;height:0px;"><defs><marker id="startarrowhead" viewBox="0 0 10 10" refX="1" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="8" orient="auto"><path style="fill:none;stroke:black;" d="M 10 0 L 0 5 L 10 10"></path></marker><marker id="endarrowhead" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="8" orient="auto"><path style="fill:none;stroke:black;" d="M 0 0 L 10 5 L 0 10"></path></marker><pattern id="sketchedHover" x="30" y="20" width="50" height="60" patternUnits="userSpaceOnUse"><image href="../resources/icons/sketchedFilledButton.png" width="175" height="75"></image></pattern></defs></svg><div class="p-PreviewBanner" data-p-component="previewBanner"><svg class="p-PreviewBanner-icon p-Icon p-Icon--xxs"><use href="#icon-pidoco-project"></use></svg><div class="p-PreviewBanner-text"><span xmlns="">This project was created with a free version of Pidoco. <a class="p-PreviewBanner-link" href="../images/pidoco.com-pricing">Upgrade </a> to remove this notice.</span></div></div><div class="p-Preview" data-p-component="preview"><div class="p-Preview-prototype"><div class="simulation-container"><div class="simulation-scaled"><svg class="frame-wrapper" height="100000" width="100000"><svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" class="frame" x="0" y="0"><use xlink:href="#"></use></svg></svg><div class="border-wrapper"><div id="borderDiv" class="border-div"><div class="p-OriginElement">origin</div><div xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="" id="repository" style="width: 100%; height: 100%;" class="repository mobile-interaction-potential-trigger" data-review-reference-id="page793300013" data-page-id="page793300013"><div data-layer-id="page793300013" id="repository-page793300013-wrapper" class=" wrapper wrapper-page793300013"><div id="repositorypage793300013-layer" class="layer" name="repositorypageLayer" data-layer-id="page793300013" data-layer-type="pageLayer" style="position:absolute;left:0px;top:0px;"><div id="repository-page793300013-layer-textinput293554971" style="position: absolute; left: 520px; top: 230px; width: 260px; height: 30px" data-stencil-type="default.textinput" data-interactive-element-type="default.textinput" class="textinput stencil mobile-interaction-potential-trigger " data-stencil-id="textinput293554971" data-review-reference-id="textinput293554971"><div class="stencil-wrapper" style="width: 260px; height: 30px"><div xmlns="http://www.w3.org/1999/xhtml" title=""><input type="text" id="repository-page793300013-layer-textinput293554971input" value="" style="width:258px;height:28px;padding: 0px;border-width:1px;" class="" onsubmit="debugger"></input></div></div></div><div id="repository-page793300013-layer-text709794791" style="position: absolute; left: 370px; top: 235px; width: 49px; height: 23px" data-stencil-type="default.text2" data-interactive-element-type="default.text2" class="text2 stencil mobile-interaction-potential-trigger " data-stencil-id="text709794791" data-review-reference-id="text709794791"><div class="stencil-wrapper" style="width: 49px; height: 23px"><div xmlns="http://www.w3.org/1999/xhtml" title="" style="width:59px;width:-webkit-max-content;width:-moz-max-content;width:max-content;"><span class="default-text2-container-wrapper" title=""><span class="default-text2-container" data-child-type="default.text2"><p style="font-size: 14px;"><span style="font-size: 20px; color: #658cd9;">User:</span></p></span></span></div></div></div><div id="repository-page793300013-layer-textinput280444894" style="position: absolute; left: 520px; top: 295px; width: 260px; height: 30px" data-stencil-type="default.textinput" data-interactive-element-type="default.textinput" class="textinput stencil mobile-interaction-potential-trigger " data-stencil-id="textinput280444894" data-review-reference-id="textinput280444894"><div class="stencil-wrapper" style="width: 260px; height: 30px"><div xmlns="http://www.w3.org/1999/xhtml" title=""><input type="text" id="repository-page793300013-layer-textinput280444894input" value="" style="width:258px;height:28px;padding: 0px;border-width:1px;" class="" onsubmit="debugger"></input></div></div></div><div id="repository-page793300013-layer-text222299312" style="position: absolute; left: 370px; top: 305px; width: 100px; height: 23px" data-stencil-type="default.text2" data-interactive-element-type="default.text2" class="text2 stencil mobile-interaction-potential-trigger " data-stencil-id="text222299312" data-review-reference-id="text222299312"><div class="stencil-wrapper" style="width: 100px; height: 23px"><div xmlns="http://www.w3.org/1999/xhtml" title="" style="width:110px;width:-webkit-max-content;width:-moz-max-content;width:max-content;"><span class="default-text2-container-wrapper" title=""><span class="default-text2-container" data-child-type="default.text2"><p style="font-size: 14px;"><span style="font-size: 20px; color: #658cd9;">Password :</span></p></span></span></div></div></div><div id="repository-page793300013-layer-iphoneButton326851507" style="position: absolute; left: 440px; top: 390px; width: 50px; height: 30px" data-stencil-type="default.iphoneButton" data-interactive-element-type="default.iphoneButton" class="iphoneButton pidoco-clickable-element stencil mobile-interaction-potential-trigger " data-stencil-id="iphoneButton326851507" data-review-reference-id="iphoneButton326851507"><div class="stencil-wrapper" style="width: 50px; height: 30px"><div xmlns:pidoco="http://www.pidoco.com/util" xmlns="http://www.w3.org/1999/xhtml" title="" style="height: 30px;width:50px;"><svg xmlns:xlink="http://www.w3.org/1999/xlink" overflow="hidden" width="50" height="30" viewBox="0 0 50 30"><a><path fill-rule="evenodd" clip-rule="evenodd" fill="#808080" stroke="#666666" d="M5,29.5 l-2,-0.5 -1,-1 -1,-1.5 -0.5,-1.5 0,-20 0.5,-2 1,-1 1,-1 2,-0.5 40,0 1.5,0.5 1.5,1 1,1.5 0.5,1.5 0,20 -0.5,1.5 -1,1.5 -1.5,1 -1.5,0.5 z"></path><text x="25" y="15" dy="0.3em" fill="#FFFFFF" style="font-size:1em;stroke-width:0pt;" font-family="'HelveticaNeue-Bold'" text-anchor="middle" xml:space="preserve">Login</text></a></svg></div></div><div class="interactive-stencil-highlighter" style="width: 50px; height: 30px"></div><div xmlns:json="http://json.org/" xmlns="http://www.w3.org/1999/xhtml"></div></div><div id="repository-page793300013-layer-iphoneButton604598753" style="position: absolute; left: 660px; top: 390px; width: 64px; height: 30px" data-stencil-type="default.iphoneButton" data-interactive-element-type="default.iphoneButton" class="iphoneButton pidoco-clickable-element stencil mobile-interaction-potential-trigger " data-stencil-id="iphoneButton604598753" data-review-reference-id="iphoneButton604598753"><div class="stencil-wrapper" style="width: 64px; height: 30px"><div xmlns:pidoco="http://www.pidoco.com/util" xmlns="http://www.w3.org/1999/xhtml" title="" style="height: 30px;width:64px;"><svg xmlns:xlink="http://www.w3.org/1999/xlink" overflow="hidden" width="64" height="30" viewBox="0 0 64 30"><a><path fill-rule="evenodd" clip-rule="evenodd" fill="#808080" stroke="#666666" d="M5,29.5 l-2,-0.5 -1,-1 -1,-1.5 -0.5,-1.5 0,-20 0.5,-2 1,-1 1,-1 2,-0.5 54,0 1.5,0.5 1.5,1 1,1.5 0.5,1.5 0,20 -0.5,1.5 -1,1.5 -1.5,1 -1.5,0.5 z"></path><text x="32" y="15" dy="0.3em" fill="#FFFFFF" style="font-size:1em;stroke-width:0pt;" font-family="'HelveticaNeue-Bold'" text-anchor="middle" xml:space="preserve">Sign up </text></a></svg></div></div><div class="interactive-stencil-highlighter" style="width: 64px; height: 30px"></div><div xmlns:json="http://json.org/" xmlns="http://www.w3.org/1999/xhtml"></div></div></div></div></div><div id="dContainer" style="position:absolute;top:0px;width:1200px;height:0px;left:0px;background:transparent;" class="yui-skin-sam"></div></div></div></div></div></div></div><script xmlns:json="http://json.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema" type="text/javascript">
+				$(document).ready(function(){
+					Raven.context(function () {
+						rabbit.interaction.manager.registerInteraction('repository-page793300013-layer-iphoneButton326851507', 'interaction166195369', {"button":"left","id":"action857952603","numberOfFinger":"1","type":"click"},  
+							[
+								{"delay":"0","id":"reaction448334397","options":"reloadOnly","target":"page477764928","transition":"none","type":"showPage"}
+							]
+						);
+					});
+				});
+			</script><script xmlns:json="http://json.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema" type="text/javascript">
+				$(document).ready(function(){
+					Raven.context(function () {
+						rabbit.interaction.manager.registerInteraction('repository-page793300013-layer-iphoneButton604598753', 'interaction792253063', {"button":"left","id":"action328985324","numberOfFinger":"1","type":"click"},  
+							[
+								{"delay":"0","id":"reaction862350733","options":"reloadOnly","target":"page736285591","transition":"none","type":"showPage"}
+							]
+						);
+					});
+				});
+			</script><script type="text/javascript">
+			$(document).ready(function(){
+				Raven.context(function () {
+					
+						rabbit.result.manager.pageReady('page793300013');
+					
+				});
+			});
+		</script></body></html>
