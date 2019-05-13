@@ -23,5 +23,8 @@ $autoload['libraries'] = array('database');
 6. luati fisierele din directorul tabele
 7. creati si populati tabelele 
 
+8. pentru a folosi base_url(); trebuie mers in  directorul C:/...\ecabgine\application\config\autoload.php
+
+$autoload['helper'] = array('url');
 
 
