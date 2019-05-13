@@ -1,0 +1,20 @@
+body {
+	background-image: url("../image/ginecology_backround.jpg");
+	background-color: lightblue;
+}
+
+.mt150 {
+	margin-top: 150px;
+}
+
+.mt70 {
+	margin-top: 70px;
+}
+
+.xbootstrap {
+	color: #202020;
+	/*	font-size: 3em;*/
+	/*	background-color: #2d2d2d;*/
+	letter-spacing: .1em;
+	text-shadow: -1px -1px 1px #111, 2px 2px 1px #363636;
+}
