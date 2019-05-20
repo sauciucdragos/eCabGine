@@ -22,4 +22,4 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id_user`, `user`, `active_user`, `locked_user`, `first_name`, `last_name`, `password`, `position`) VALUES
-(1, 'admin', 'activ', '', 'admin', 'admin', '1234', '');
+(1, 'admin', 'activ', '', 'admin', 'admin', '1234', 'Doctor');
