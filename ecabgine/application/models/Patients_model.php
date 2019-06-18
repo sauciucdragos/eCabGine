@@ -30,7 +30,7 @@ class Patients_model extends CI_Model {
 			'first_name' => $this->input->post('first_name'),
 			'last_name' => $this->input->post('first_name'),
 			'birth_date' => $this->input->post('birth_day'),
-			// 'patient_id' => $this->input->post('patient_id'), //should be added
+			// 'patient_id' => $this->input->post('patient_id'), //this field should be added
 			'id_county' => $this->input->post('county'),
 			'id_city' => $this->input->post('location'),
 			'address' => $this->input->post('address'),
@@ -57,34 +57,18 @@ class Patients_model extends CI_Model {
 
 	public function get_city_list()
 	{
-		// $this->load->helper('url');
-
-		$this->db->select('id_city, city') ;
+		$this->db->select('id_city, city'); //to be sure about order
 		$query = $this->db->get('city');
 		
 		return $query->result_array();
-		// $data['city_list'] = array(
-		// 	array(0, 'Cluj-Napoca'),
-		// 	array(1, 'Huedin'), 
-		// 	array(2, 'Dej'), 
-		// 	array(3, 'Turda'), 
-		// 	array(4, 'Blaj'), 
-		// 	array(5, 'Tirgu Mures')
-		// );
-		// return $data;
-
 	}
 
-/*
-	public function my_form_dropdown($name, $result_array)
+	public function get_county_list()
 	{
-	    $options = array();
-	    foreach ($result_array as $key => $value){
-	        $options[$value['id']] = $value['value'];
-	    }
-	    return form_dropdown($name, $options);
+		$this->db->select('id_county, county'); //to be sure about order
+		$query = $this->db->get('county');
+		
+		return $query->result_array();
 	}
-*/
-
 
 }

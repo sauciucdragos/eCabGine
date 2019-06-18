@@ -13,21 +13,10 @@ class Patients_list extends CI_Controller{
 		$this->load->library('form_validation');
 
 		$data['title'] = 'Add new patient';
-		$data['county_list'] = array(
-			array(0,'Cluj'),
-			array(1, 'Bihor'),
-			array(2, 'Alba'),
-			array(3, 'Mures')
-		);
-		$data['city_list'] = array(
-			array(0, 'Cluj-Napoca'),
-			array(1, 'Huedin'), 
-			array(2, 'Dej'), 
-			array(3, 'Turda'), 
-			array(4, 'Blaj'), 
-			array(5, 'Tirgu Mures')
-		);
+		$data['county_list'] = $this->patients_model->get_county_list();
 		$data['city_list'] = $this->patients_model->get_city_list();
+		// echo '<br> data[city_list] <br>';
+		// print_r($data['city_list']);
 
 		$this->form_validation->set_rules('first_name', 'First Name', 'required');
 		// $this->form_validation->set_rules('first_name', 'First Name', 'trim|required');
