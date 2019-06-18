@@ -2,9 +2,7 @@
 
 <?php echo validation_errors(); ?>
 
-<!-- <?php echo form_open('Patients_list/AddNewPatient'); ?> -->
 <?php echo form_open('Patients_List/AddNewPatient'); ?>
-
 
 		<label for="first_name">First Name</label>
 		<input type="text" name="first_name"><br />		
