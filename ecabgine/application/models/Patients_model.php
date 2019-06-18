@@ -28,7 +28,7 @@ class Patients_model extends CI_Model {
 
 		$data = array(
 			'first_name' => $this->input->post('first_name'),
-			'last_name' => $this->input->post('first_name'),
+			'last_name' => $this->input->post('last_name'),
 			'birth_date' => $this->input->post('birth_day'),
 			// 'patient_id' => $this->input->post('patient_id'), //this field should be added
 			'id_county' => $this->input->post('county'),

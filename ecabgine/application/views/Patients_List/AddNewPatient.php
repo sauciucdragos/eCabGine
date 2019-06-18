@@ -62,11 +62,11 @@
 		<input type="text" name="patient_id"><br />
 
 <!-- this 2 lines are for debug. we'll delete later -->
-		<label for="county">County</label>
+<!-- 		<label for="county">County</label>
 		<input type="number" name="county"><br />
-
-		<label for="select_county">Select county</label>
-		<select name="select_county">
+ -->
+		<label for="county">Select county</label>
+		<select name="county">
 		<?php
 			foreach ($county_list as $county)
 			{
@@ -75,11 +75,22 @@
 		?>
 		</select> <br/>
 <!-- this 2 lines are for debug. we'll delete later -->
-		<label for="location">Location</label>
+<!-- 		<label for="location">Location</label>
 		<input type="number" name="location"><br />	
-
-		<label for="select_city">Select city</label>
+ -->
+ <!-- 		<label for="select_city">Select city</label>
 		<select name="select_city">
+		<?php
+			foreach ($city_list as $city)
+				{
+					echo '<option value="'.$city['id_city'].'"> '.$city['id_city'].' '.$city['city'].' </option>';
+				}
+
+		?>
+		</select><br>
+ -->
+ 		<label for="location">Select locality</label>
+		<select name="location">
 		<?php
 			foreach ($city_list as $city)
 				{
