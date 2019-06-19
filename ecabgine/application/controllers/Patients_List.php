@@ -47,4 +47,84 @@ class Patients_list extends CI_Controller{
 		}
 		
 	}
+
+	public function search_patient_simple()	
+	{
+		$this->load->helper('form');
+		$this->load->library('form_validation');
+
+		$data['title'] = 'Search patient';
+
+		$this->form_validation->set_rules('search_criteria', 'Search Criteria', 'required');
+
+		if($this->form_validation->run() === FALSE)
+		{
+			$this->load->view('templates/header', $data);
+			$this->load->view('Patients_list/SearchPatient_Simple', $data);
+			$this->load->view('templates/footer', $data);
+		} 
+		else
+		{
+			                      // $this->patients_model->search_patient();
+			$simple_search = $this->input->post('simple_search');
+			$advanced_search = $this->input->post('advanced_search');
+			$add_new_patient = $this->input->post('add_new_patient');
+			// echo '--------- '.$simple_search.'<br/>';
+			// echo '--------- '.$advanced_search.'<br/>';
+			// echo '--------- '.$add_new_patient.'<br/>';
+			
+			if($simple_search)
+			{
+				$data['id_patient'] = $this->patients_model->search_patient();
+				$this->load->view('Patients_list/id_patient', $data);
+			}
+			
+			if($advanced_search)
+			{
+				$data['id_patient'] = $this->patients_model->search_patient_advanced();
+				$this->load->view('Patients_list/id_patient', $data);
+			}
+			
+			// $this->load->view('Patients_list/id_patient', $data);
+		}
+
+
+	}
+
+		public function search_patient_advanced()	
+	{
+		$this->load->helper('form');
+		$this->load->library('form_validation');
+
+		$data['title'] = 'Search patient (advanced)';
+
+		$this->form_validation->set_rules('search_criteria', 'Search Criteria', 'required');
+
+		if($this->form_validation->run() === FALSE)
+		{
+			$this->load->view('templates/header', $data);
+			$this->load->view('Patients_list/SearchPatient_Advanced', $data);
+			$this->load->view('templates/footer', $data);
+		} 
+		else
+		{
+			                      // $this->patients_model->search_patient();
+			$simple_search = $this->input->post('simple_search');
+			$advanced_search = $this->input->post('advanced_search');
+			$add_new_patient = $this->input->post('add_new_patient');
+			// echo '--------- '.$simple_search.'<br/>';
+			// echo '--------- '.$advanced_search.'<br/>';
+			// echo '--------- '.$add_new_patient.'<br/>';
+			
+			if($advanced_search)
+			{
+				$data['id_patient'] = $this->patients_model->search_patient_advanced();
+				$this->load->view('Patients_list/id_patient', $data);
+			}
+			
+			// $this->load->view('Patients_list/id_patient', $data);
+		}
+
+
+	}
 }
