@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title> (simple) Search patient</title>
+</head>
+<body>
+
+	<form>
+
+		<label for="select_search_criteria">Search criteria</label>
+		<select name="select_search_criteria">
+			<option value="first_name">First Name </option>
+			<option value="last_name">Last name</option>
+			<option value="CNP">CNP</option>
+		</select>
+		<input type="submit" name="search_criteria">
+		<br>
+
+
+		<label for="search_data">Fill name or CNP</label>
+		<input type="text" name="search_data">
+
+		<input type="submit" name="simple_search" value="Search for patient">
+		<br />
+		<input type="submit" name="advanced_search" value="Advanced search">
+		<input type="submit" name="add_new_patient" value="Add new patient">
+
+	</form>
+
+</body>
+</html>
