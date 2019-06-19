@@ -68,38 +68,55 @@ class Patients_model extends CI_Model {
 		$this->load->helper('url');
 
 		$sql = "SELECT id_patient FROM patient WHERE ";
+		$sql1 = "";
 
-		if($this->input->post('search_first_name'))
+		// print_r($_POST);
+
+		if($this->input->post('search_field[0]'))
 			{
-				$first_name=$this->input->post('first_name');
-				$sql = $sql.' $first_name' . ' = ?';
+				$first_name=$this->input->post('txt_first_name');
+				$sql1 = $sql1.' first_name' . ' = ?';
 				$sqlarry[] = $first_name;
 			}
 
-		if($this->input->post('search_last_name'))
+		if($this->input->post('search_field[1]'))
 			{
-				$last_name=$this->input->post('last_name');
-				$sql = $sql.' $last_name' . ' = ?';
+				$last_name=$this->input->post('txt_last_name');
+				if($sql1 != NULL)
+					{
+						$sql1 = $sql1.' and ';
+					}
+				$sql1 = $sql1.' last_name' . ' = ?';
 				$sqlarry[] = $last_name;
 			}
 
-		if($this->input->post('search_cnp'))
+		if($this->input->post('search_field[2]'))
 			{
-				$cnp=$this->input->post('cnp');
-				$sql = $sql.' $cnp' . ' = ?';
+				$cnp=$this->input->post('txt_cnp');
+				if(!$sql1 != NULL)
+					{
+						$sql1 = $sql1.' and ';
+					}
+				$sql1 = $sql1.' cnp' . ' = ?';
 				$sqlarry[] = $cnp;
 			}
 
-		if($this->input->post('search_id_patient'))
+		if($this->input->post('search_field[3]'))
 			{
-				$id_patient=$this->input->post('id_patient');
-				$sql = $sql.' $id_patient' . ' = ?';
+				$id_patient=$this->input->post('txt_id_patient');
+				if($sql1 != NULL)
+					{
+						$sql1 = $sql1.' and ';
+					}
+				$sql1 = $sql1.' id_patient' . ' = ?';
 				$sqlarry[] = $id_patient;
 			}
 
+		$sql = $sql.$sql1;
+		//the above should synthetize the following arrays:
 		// $sql = "SELECT id_patient FROM patient WHERE $first_name = ? and $last_name = ? and $cnp = ? and $id_patient = ?";
-
 		// $query = $this->db->query($sql, array($first_name, $last_name, $cnp, $id_patient));
+
 		$query = $this->db->query($sql, $sqlarry);
 		
 		return $query->result_array();

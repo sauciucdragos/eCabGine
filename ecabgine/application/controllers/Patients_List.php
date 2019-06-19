@@ -98,7 +98,7 @@ class Patients_list extends CI_Controller{
 
 		$data['title'] = 'Search patient (advanced)';
 
-		$this->form_validation->set_rules('search_criteria', 'Search Criteria', 'required');
+		$this->form_validation->set_rules('search_field[]', 'Search Criteria', 'required');
 
 		if($this->form_validation->run() === FALSE)
 		{
