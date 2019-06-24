@@ -69,6 +69,7 @@ class Patients_model extends CI_Model {
 
 		$sql = "SELECT id_patient FROM patient WHERE ";
 		$sql1 = "";
+		// $sqlarry[]="";
 
 		// print_r($_POST);
 
