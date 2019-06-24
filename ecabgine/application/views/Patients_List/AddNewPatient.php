@@ -17,8 +17,8 @@
 		<input type="text" name="patient_id"><br />
 
 		<label for="county">Select county</label>
-		<!-- <select name="county" onchange="getCities(this)"> -->
-		<select name="county">
+		<select name="county" onchange="getCities(this)">
+		<!-- <select name="county"> -->
 		<?php
 			foreach ($county_list as $county)
 			{
