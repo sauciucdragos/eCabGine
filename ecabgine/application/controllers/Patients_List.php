@@ -97,7 +97,7 @@ class Patients_list extends CI_Controller{
 
 	}
 
-		public function search_patient_advanced()	
+	public function search_patient_advanced()	
 	{
 		$this->load->helper('form');
 		$this->load->library('form_validation');
@@ -141,4 +141,13 @@ class Patients_list extends CI_Controller{
 	// 	header('Content-Type: application/json');
  //    	echo json_encode( $arr );
 	// }
+
+	public function getCitiesList()
+	{
+		$county_id = $this->input->post('id_county');	//id_county should be replaced with right value;
+		$cities_list=$this->patients_model->getCities($county_id);
+
+		header('Content-Type: application/json');
+	    echo json_encode( $arr );	
+	}
 }

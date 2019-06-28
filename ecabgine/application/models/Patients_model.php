@@ -122,12 +122,38 @@ class Patients_model extends CI_Model {
 		
 		return $query->result_array();
 	}
+	public function search_patient_advanced2()
+	{
+		$this->load->helper('url');
+
+		$this->db->select('id_patient');
+		$this->db->from('patient');
+		$this->db->where('first_name', $this->input->post('search_field[0]'));
+		$this->db->where('last_name', $this->input->post('search_field[1]'));
+		$this->db->where('', $this->input->post('search_field[2]'));
+		$this->db->where('', $this->input->post('search_field[3]'));
+
+		$query = $this->db->get();
+		return $query->result_array();
+	}
 
 	public function get_city_list()
 	{
 		$this->db->select('id_city, city'); //to be sure about order
 		$query = $this->db->get('city');
 		
+		return $query->result_array();
+	}
+
+	public function getCitiesList($county_id)
+	{
+		$this->load->helper('url');
+
+		$this->db->select('id_city, city');
+		$this->db->from('city');
+		$this->db->where('id_county', $county_id);
+
+		$query = $this->db->get();
 		return $query->result_array();
 	}
 

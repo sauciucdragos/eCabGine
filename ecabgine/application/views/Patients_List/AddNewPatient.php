@@ -17,7 +17,8 @@
 		<input type="text" name="patient_id"><br />
 
 		<label for="county">Select county</label>
-		<select name="county" onchange="getCities(this)">
+		<select name="county" id="selectCounty" onchange="getCities()">
+		<!-- <select name="county" id="selectCounty" onchange="getCities(this)"> -->
 		<!-- <select name="county"> -->
 		<?php
 			foreach ($county_list as $county)
@@ -65,5 +66,18 @@
 		<input type="submit" name="consult-patient" value="Consult new patient" />
 		
 		<input type="submit" name="cancel-patient" value="Cancel" />
+
+		<script type="text/javascript">
+			function getCities(){
+				$()...
+				var xhttp = new XMLHttpRequest();
+				xhttp.onreadystatechange = function(){
+					if(this.readyState==4 && this.status==200);
+
+					/////continuam maine
+				}
+
+			}
+		</script>
 		
 	</form>
