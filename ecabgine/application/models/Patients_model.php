@@ -152,7 +152,6 @@ class Patients_model extends CI_Model {
 		$this->db->select('id_city, city');
 		$this->db->from('city');
 		$this->db->where('id_county', $county_id);
-
 		$query = $this->db->get();
 		return $query->result_array();
 	}

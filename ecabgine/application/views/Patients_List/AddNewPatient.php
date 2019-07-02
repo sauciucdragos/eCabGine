@@ -17,27 +17,32 @@
 		<input type="text" name="patient_id"><br />
 
 		<label for="county">Select county</label>
-		<select name="county" id="selectCounty" onchange="getCities()">
 		<!-- <select name="county" id="selectCounty" onchange="getCities(this)"> -->
-		<!-- <select name="county"> -->
+		<select name="county" id="selectCounty" onchange="getCities(this.value)">
 		<?php
 			foreach ($county_list as $county)
 			{
 				echo '<option value="'.$county['id_county'].'"> '.$county['id_county'].' '.$county['county'].' </option>';
 			}
 		?>
-		</select> <br/>
+		</select><br/> <!-- debug:<p id="testField"></p> -->
+		
 
  		<label for="location">Select locality</label>
-		<select name="location">
-		<?php
+		<select name="location" id="idSelectCity">
+<!-- 		<?php
 			foreach ($city_list as $city)
 				{
 					echo '<option value="'.$city['id_city'].'"> '.$city['id_city'].' '.$city['city'].' </option>';
 				}
 
-		?>
-		</select><br>
+		?> -->
+			<option> Select County first</option>
+		</select>
+		<label for="addNewCity">or add new locality </label>
+		<input type="text" name="addNewCity"></input>
+		<input type="button" name="addNewLocality" value="Add locality"></input>
+		<br>
 
 		<label for="address">Address</label>
 		<input type="text" name="address"><br />	
@@ -68,16 +73,67 @@
 		<input type="submit" name="cancel-patient" value="Cancel" />
 
 		<script type="text/javascript">
-			function getCities(){
-				$()...
-				var xhttp = new XMLHttpRequest();
-				xhttp.onreadystatechange = function(){
-					if(this.readyState==4 && this.status==200);
 
-					/////continuam maine
+/*			function getCities(str) {
+
+				document.getElementById("#testField").innerHTML = str;
+				var xmlhttp = new XMLHttpRequest();
+				xmlhttp.onreadystatechange = function(){
+					if(this.readyState==4 && this.status==200){
+						setCities(this.responseText);
+					}
+					xmlhttp.open("GET", "index.php/Patients_list/getCitiesList?county=" + str, true);
+					xmlhttp.send();
 				}
 
 			}
+*/
+
+			function getCities(str) {
+				// console.log(str);
+				var xmlhttp = new XMLHttpRequest();
+				xmlhttp.onload = function(){
+					var strTmp=this.responseText;
+					idxStart=strTmp.search("\\[");
+					idxEnd=strTmp.search("\\]");
+					strTmp=strTmp.slice(idxStart,idxEnd+1);
+					// var citiesList=JSON.parse('[{"id":"1", "city":"Cluj"}, {"id":"2", "city":"Huedin"}]');
+					var citiesList=JSON.parse(strTmp);
+					console.log(citiesList);
+					dynamicSelectList("#idSelectCity", citiesList);
+					}
+	
+				xmlhttp.open("GET", "<?php echo base_url("index.php/Patients_list/getCitiesList?county="); ?>" + str, true);
+				xmlhttp.send();
+			}
+
+			// build dynamicSelectList(DOM Element ID, Element List)
+			function dynamicSelectList(domElID, elList)	
+			{
+
+				selList=document.querySelector(domElID);
+
+				//maybe split in two functions, one who delete(clean) and one who create
+				opt=selList.children;
+				for (var i = opt.length - 1; i >= 0; i--) {
+					opt[i].remove();
+				}
+
+				if(elList.length == 0)
+				{
+					elList=[{id:"0",city:"No city found for this county"}];
+
+				}
+
+				for (var i = 0; i < elList.length; i++) 
+				{
+					var opt=document.createElement('OPTION');
+					opt.value=elList[i].id_city;
+					opt.innerHTML=elList[i].city; 
+					selList.appendChild(opt);
+				}
+
+			}
+
 		</script>
-		
 	</form>

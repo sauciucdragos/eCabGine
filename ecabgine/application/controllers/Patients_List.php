@@ -143,11 +143,12 @@ class Patients_list extends CI_Controller{
 	// }
 
 	public function getCitiesList()
-	{
-		$county_id = $this->input->post('id_county');	//id_county should be replaced with right value;
-		$cities_list=$this->patients_model->getCities($county_id);
+	{	
+		$county_id = $this->input->get('county');	
+		$cities_list=$this->patients_model->getCitiesList($county_id);
 
 		header('Content-Type: application/json');
-	    echo json_encode( $arr );	
+	    echo json_encode( $cities_list );	
 	}
+
 }
