@@ -25,24 +25,17 @@
 				echo '<option value="'.$county['id_county'].'"> '.$county['id_county'].' '.$county['county'].' </option>';
 			}
 		?>
-		</select><br/> <!-- debug:<p id="testField"></p> -->
-		
+		</select><br/> 
 
  		<label for="location">Select locality</label>
 		<select name="location" id="idSelectCity">
-<!-- 		<?php
-			foreach ($city_list as $city)
-				{
-					echo '<option value="'.$city['id_city'].'"> '.$city['id_city'].' '.$city['city'].' </option>';
-				}
-
-		?> -->
 			<option> Select County first</option>
 		</select>
-		<label for="addNewCity">or add new locality </label>
-		<input type="text" name="addNewCity"></input>
-		<input type="button" name="addNewLocality" value="Add locality"></input>
-		<br>
+		<!-- <label for="addNewCity">or add new locality </label> -->
+		<label for="addNewCity"></label>
+		<input type="text" name="txtAddNewCity" id="txtAddNewCity" placeholder="or add new locality here"></input>
+		<input type="button" name="btnAddNewCity" value="Add locality" onclick="insertNewCity()"></input>
+		<br>                                    <!--alternative event: onmouseup -->
 
 		<label for="address">Address</label>
 		<input type="text" name="address"><br />	
@@ -93,22 +86,18 @@
 				// console.log(str);
 				var xmlhttp = new XMLHttpRequest();
 				xmlhttp.onload = function(){
-					var strTmp=this.responseText;
-					idxStart=strTmp.search("\\[");
-					idxEnd=strTmp.search("\\]");
-					strTmp=strTmp.slice(idxStart,idxEnd+1);
 					// var citiesList=JSON.parse('[{"id":"1", "city":"Cluj"}, {"id":"2", "city":"Huedin"}]');
-					var citiesList=JSON.parse(strTmp);
-					console.log(citiesList);
-					dynamicSelectList("#idSelectCity", citiesList);
+					var citiesList=JSON.parse(this.responseText);
+					dynamicSelectList("#idSelectCity", citiesList,null);
 					}
+				// console.log("<?php echo base_url("index.php/Patients_list/getCitiesList?county="); ?>" + str);
 	
 				xmlhttp.open("GET", "<?php echo base_url("index.php/Patients_list/getCitiesList?county="); ?>" + str, true);
 				xmlhttp.send();
 			}
 
-			// build dynamicSelectList(DOM Element ID, Element List)
-			function dynamicSelectList(domElID, elList)	
+			// build dynamicSelectList(DOM Element ID, Element List, preselected value)
+			function dynamicSelectList(domElID, elList, activeVal)	
 			{
 
 				selList=document.querySelector(domElID);
@@ -130,9 +119,32 @@
 					var opt=document.createElement('OPTION');
 					opt.value=elList[i].id_city;
 					opt.innerHTML=elList[i].city; 
+			      	if(elList[i].city==activeVal)
+			      	{
+			      		opt.selected=true;
+				    }
 					selList.appendChild(opt);
 				}
 
+			}
+
+			function insertNewCity()
+			{
+				newCity=document.querySelector("#txtAddNewCity").value;
+				county=document.querySelector("#selectCounty").value;
+				console.log(newCity, county);
+
+				var xhtp=new XMLHttpRequest();
+				xhtp.onload=function(){
+					var citiesList=JSON.parse(this.responseText);
+					dynamicSelectList("#idSelectCity", citiesList, newCity);
+					document.querySelector("#txtAddNewCity").value = "";
+					};
+
+				console.log("<?php echo base_url("index.php/Patients_list/insertNewCity?city="); ?>" + newCity + "<?php echo "&county="; ?>" + county);
+
+				xhtp.open("GET", "<?php echo base_url("index.php/Patients_list/insertNewCity?city="); ?>" + newCity + "<?php echo "&county="; ?>" + county, true);
+				xhtp.send();
 			}
 
 		</script>

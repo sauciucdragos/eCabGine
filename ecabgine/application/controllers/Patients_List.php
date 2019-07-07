@@ -1,5 +1,10 @@
 <?php
 class Patients_list extends CI_Controller{
+
+	const SIMPLE_SEARCH = 1;
+	const ADVANCED_SEARCH = 2;
+	const ADD_NEW_PATIENT = 3;
+
 	public function __construct()
 	{
 		parent::__construct();
@@ -48,6 +53,21 @@ class Patients_list extends CI_Controller{
 		
 	}
 
+	private function get_SearchType()
+	{
+
+		if($this->input->post('simple_search')){
+			return 'SIMPLE_SEARCH';};
+
+		if($this->input->post('advanced_search')){
+			return 'ADVANCED_SEARCH';};
+
+		if($this->input->post('add_new_patient')){
+			return 'ADD_NEW_PATIENT';}
+
+		return NULL;
+	}
+
 	public function search_patient_simple()	
 	{
 		$this->load->helper('form');
@@ -65,18 +85,37 @@ class Patients_list extends CI_Controller{
 		} 
 		else
 		{
-			                      // $this->patients_model->search_patient();
 			$simple_search = $this->input->post('simple_search');
 			$advanced_search = $this->input->post('advanced_search');
 			$add_new_patient = $this->input->post('add_new_patient');
 			// echo '--------- '.$simple_search.'<br/>';
 			// echo '--------- '.$advanced_search.'<br/>';
 			// echo '--------- '.$add_new_patient.'<br/>';
-			
+			$searchType = $this->get_SearchType();
+			switch ($searchType) {
+				case 'SIMPLE_SEARCH':
+					$data['patients'] = $this->patients_model->search_patient();
+					$this->load->view('templates/header', $data);
+					$this->load->view('Patients_list/ListPatientsFound', $data);
+					$this->load->view('templates/footer', $data);
+					break;
+				case 'ADVANCED_SEARCH':
+					// $data['id_patient']= $this->search_patient_advanced();
+					$this->search_patient_advanced();
+					break;
+				case 'ADD_NEW_PATIENT':
+					$this->insert_new_patient();
+					break;
+				default:
+					echo 'Invalid search type! <br/>';
+					break;
+			}
+			/*
 			if($simple_search)
 			{
-				$data['id_patient'] = $this->patients_model->search_patient();
-				$this->load->view('Patients_list/id_patient', $data);
+				$data['patients'] = $this->patients_model->search_patient();
+				$this->load->view('Patients_list/ListPatientsFound', $data);
+				// $this->load->view('Patients_list/id_patient', $data);
 			}
 			
 			if($advanced_search)
@@ -89,7 +128,7 @@ class Patients_list extends CI_Controller{
 			if($add_new_patient)
 			{
 				$this->insert_new_patient();
-			}
+			}*/
 			
 			// $this->load->view('Patients_list/id_patient', $data);
 		}
@@ -124,8 +163,10 @@ class Patients_list extends CI_Controller{
 			
 			if($advanced_search)
 			{
-				$data['id_patient'] = $this->patients_model->search_patient_advanced();
-				$this->load->view('Patients_list/id_patient', $data);
+				$data['patients'] = $this->patients_model->search_patient_advanced();
+				$this->load->view('templates/header', $data);
+				$this->load->view('Patients_list/ListPatientsFound', $data);
+				$this->load->view('templates/footer', $data);
 			}
 			
 			// $this->load->view('Patients_list/id_patient', $data);
@@ -134,13 +175,10 @@ class Patients_list extends CI_Controller{
 
 	}
 
-	// public getCities() {
-	// 	// cityId //iau vakoarea dn Get/poST
-	// 	//query in db
-	// 	// compui array
-	// 	header('Content-Type: application/json');
- //    	echo json_encode( $arr );
-	// }
+	public function list_patients_found()
+	{
+		// $this->patients_model->
+	}
 
 	public function getCitiesList()
 	{	
@@ -149,6 +187,20 @@ class Patients_list extends CI_Controller{
 
 		header('Content-Type: application/json');
 	    echo json_encode( $cities_list );	
+	}
+
+	public function insertNewCity()
+	{
+		// $this->load->helper('form');
+		// $this->load->library('form_validation');
+
+		$newCity=$this->input->get('city');
+		$county=$this->input->get('county');
+
+		$cities_list=$this->patients_model->insertNewCity($county,$newCity);
+
+		header('Content-Type: application/json');
+	    echo json_encode( $cities_list );
 	}
 
 }

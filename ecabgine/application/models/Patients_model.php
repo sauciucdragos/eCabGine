@@ -1,5 +1,8 @@
 <?php
 class Patients_model extends CI_Model {
+
+	private $sql_patientData="id_patient, CONCAT(last_name, ', ', first_name) AS NAME, birth_date, cnp, concat(county, ', ', city, ', ', address) AS address, email, phone_number";
+
 	public function __construct(){
 		// $this->load->database();
 		$config['hostname'] = 'localhost';
@@ -50,6 +53,15 @@ class Patients_model extends CI_Model {
 
 	}
 
+/*
+SELECT CONCAT(last_name, ', ', first_name) AS NAME, birth_date, cnp, concat(county, ', ', city, ', ', address) AS address, email, phone_number 
+FROM patient
+JOIN city
+ON patient.id_city = city.id_city
+JOIN county 
+ON patient.id_county = county.id_county
+WHERE patient.first_name = 'Ana';
+*/
 	public function search_patient()
 	{
 		$this->load->helper('url');
@@ -57,81 +69,40 @@ class Patients_model extends CI_Model {
 		$search_criteria=$this->input->post('search_criteria');
 		$search_data=$this->input->post('search_data');
 
-		$sql = "SELECT id_patient FROM patient WHERE $search_criteria = ?";
-		$query = $this->db->query($sql, array($search_data));
+		$this->db->select($this->sql_patientData) ;
+		$this->db->from('patient');
+		$this->db->join('city', 'patient.id_city = city.id_city' );
+		$this->db->join('county', 'patient.id_county = county.id_county');
+		$this->db->where('patient.'.$search_criteria, $search_data);
+		$query = $this->db->get();
 		
 		return $query->result_array();
+	}
+
+	function buildWhereFromPOST($tableField, $postField)
+	{
+		if ($fieldValue=$this->input->post($postField))
+		{
+			$this->db->where($tableField,$fieldValue);
+		}
 	}
 
 	public function search_patient_advanced()
 	{
 		$this->load->helper('url');
 
-		$sql = "SELECT id_patient FROM patient WHERE ";
-		$sql1 = "";
-		// $sqlarry[]="";
+		// $this->db->select('id_patient');
+		// $this->db->from('patient');
 
-		// print_r($_POST);
-
-		if($this->input->post('search_field[0]'))
-			{
-				$first_name=$this->input->post('txt_first_name');
-				$sql1 = $sql1.' first_name' . ' = ?';
-				$sqlarry[] = $first_name;
-			}
-
-		if($this->input->post('search_field[1]'))
-			{
-				$last_name=$this->input->post('txt_last_name');
-				if($sql1 != NULL)
-					{
-						$sql1 = $sql1.' and ';
-					}
-				$sql1 = $sql1.' last_name' . ' = ?';
-				$sqlarry[] = $last_name;
-			}
-
-		if($this->input->post('search_field[2]'))
-			{
-				$cnp=$this->input->post('txt_cnp');
-				if(!$sql1 != NULL)
-					{
-						$sql1 = $sql1.' and ';
-					}
-				$sql1 = $sql1.' cnp' . ' = ?';
-				$sqlarry[] = $cnp;
-			}
-
-		if($this->input->post('search_field[3]'))
-			{
-				$id_patient=$this->input->post('txt_id_patient');
-				if($sql1 != NULL)
-					{
-						$sql1 = $sql1.' and ';
-					}
-				$sql1 = $sql1.' id_patient' . ' = ?';
-				$sqlarry[] = $id_patient;
-			}
-
-		$sql = $sql.$sql1;
-		//the above should synthetize the following arrays:
-		// $sql = "SELECT id_patient FROM patient WHERE $first_name = ? and $last_name = ? and $cnp = ? and $id_patient = ?";
-		// $query = $this->db->query($sql, array($first_name, $last_name, $cnp, $id_patient));
-
-		$query = $this->db->query($sql, $sqlarry);
-		
-		return $query->result_array();
-	}
-	public function search_patient_advanced2()
-	{
-		$this->load->helper('url');
-
-		$this->db->select('id_patient');
+		$this->db->select($this->sql_patientData) ;
 		$this->db->from('patient');
-		$this->db->where('first_name', $this->input->post('search_field[0]'));
-		$this->db->where('last_name', $this->input->post('search_field[1]'));
-		$this->db->where('', $this->input->post('search_field[2]'));
-		$this->db->where('', $this->input->post('search_field[3]'));
+		$this->db->join('city', 'patient.id_city = city.id_city' );
+		$this->db->join('county', 'patient.id_county = county.id_county');
+
+		$this->buildWhereFromPOST('first_name', 'txt_first_name');
+		$this->buildWhereFromPOST('last_name', 'txt_last_name');
+		$this->buildWhereFromPOST('cnp', 'txt_cnp');
+		$this->buildWhereFromPOST('id_patient', 'txt_id_patient');
 
 		$query = $this->db->get();
 		return $query->result_array();
@@ -160,6 +131,52 @@ class Patients_model extends CI_Model {
 	{
 		$this->db->select('id_county, county'); //to be sure about order
 		$query = $this->db->get('county');
+		
+		return $query->result_array();
+	}
+
+	public function insertNewCity($id_county,$newCity)
+	{
+		$data = array(
+			'id_county' => $id_county,
+			'city' => $newCity
+			);
+
+	    $this->db->insert('city',$data);
+	    return $this->getCitiesList($id_county);
+	}
+
+/* Old and now unused*/
+		public function search_patient2()
+	{
+		$this->load->helper('url');
+
+		$search_criteria=$this->input->post('search_criteria');
+		$search_data=$this->input->post('search_data');
+
+		//$sql = "SELECT id_patient FROM patient WHERE $search_criteria = ?";
+		$sql = "SELECT id_patient FROM patient WHERE $search_criteria = ?";
+		$query = $this->db->query($sql, array($search_data));
+		
+		return $query->result_array();
+	}
+
+	public function search_patient3()
+	{
+		$this->load->helper('url');
+
+		$search_criteria=$this->input->post('search_criteria');
+		$search_data=$this->input->post('search_data');
+
+		//$sql = "SELECT id_patient FROM patient WHERE $search_criteria = ?";
+		$sql = "SELECT id_patient, CONCAT(last_name, ', ', first_name) AS NAME, birth_date, cnp, concat(county, ', ', city, ', ', address) AS address, email, phone_number 
+			FROM patient
+			JOIN city
+			ON patient.id_city = city.id_city
+			JOIN county 
+			ON patient.id_county = county.id_county
+			WHERE patient.$search_criteria = ?";
+		$query = $this->db->query($sql, array($search_data));
 		
 		return $query->result_array();
 	}
