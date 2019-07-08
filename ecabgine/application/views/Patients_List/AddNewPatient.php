@@ -148,4 +148,8 @@
 			}
 
 		</script>
+		<script>
+			selectedCounty=document.querySelector("#selectCounty").selectedIndex;
+			getCities(document.querySelector("#selectCounty").options[selectedCounty].value);
+		</script>
 	</form>
