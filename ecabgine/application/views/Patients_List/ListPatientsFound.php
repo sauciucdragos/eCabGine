@@ -40,12 +40,21 @@
 	<br>
 	
 	<div>
-	<?php echo form_open('Patients_List/insert_new_patient'); ?>
-	<h4> If no patient is found, you can go and add new patient </h4>
+		<?php echo form_open('Patients_List/insert_new_patient'); ?>
 
-	<input type="submit" name="add_new_patient" value="Add new patient">
+<!-- 		<h4> If no suitable patient is found, you can go and add new patient </h4> -->
+		<table>
+			<tr>
+				<td><h4>If no suitable patient is found, you can go to add new patient</h4> </td>
+				<td><input type="submit" name="add_new_patient" value="Add new patient"></td>
+				
+			</tr>
+		</table>
+
+		
+	</form>
 	</div>
 
 
-	</form>
+
 

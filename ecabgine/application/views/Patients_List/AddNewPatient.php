@@ -22,7 +22,8 @@
 		<?php
 			foreach ($county_list as $county)
 			{
-				echo '<option value="'.$county['id_county'].'"> '.$county['id_county'].' '.$county['county'].' </option>';
+				// echo '<option value="'.$county['id_county'].'"> '.$county['id_county'].' '.$county['county'].' </option>';
+				echo '<option value="'.$county['id_county'].'"> '.$county['county'].' </option>';
 			}
 		?>
 		</select><br/> 

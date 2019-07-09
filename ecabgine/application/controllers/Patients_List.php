@@ -20,8 +20,6 @@ class Patients_list extends CI_Controller{
 		$data['title'] = 'Add new patient';
 		$data['county_list'] = $this->patients_model->get_county_list();
 		$data['city_list'] = $this->patients_model->get_city_list();
-		// echo '<br> data[city_list] <br>';
-		// print_r($data['city_list']);
 
 		$this->form_validation->set_rules('first_name', 'First Name', 'trim|required');
 		$this->form_validation->set_rules('last_name', 'Last Name', 'required');
@@ -40,9 +38,12 @@ class Patients_list extends CI_Controller{
 
 		if($this->form_validation->run() === FALSE)
 		{
-			$this->load->view('templates/header', $data);
-			$this->load->view('Patients_list/AddNewPatient', $data);
-			$this->load->view('templates/footer', $data);
+			// $this->load->view('templates/header', $data);
+			// $this->load->view('Patients_list/AddNewPatient', $data);
+			// $this->load->view('templates/footer', $data);
+			$content['view']='Patients_list/AddNewPatient';
+			$content['data'] = $data;
+			$this->load->view('layouts/patients',$content);
 		} 
 		else
 		{
@@ -67,20 +68,40 @@ class Patients_list extends CI_Controller{
 		return NULL;
 	}
 
+	private function displaySearchResult($content, $data)
+	{
+		$content['data']=$data;
+
+		if(count($data['patients']))
+		{
+			$content['view']='Patients_list/ListPatientsFound';				
+		}
+		else
+		{
+			$content['view']='Patients_list/ListPatientsNotFound';
+		}
+
+		$this->load->view('layouts/patients',$content);
+	}
+
 	public function search_patient_simple()	
 	{
 		$this->load->helper('form');
 		$this->load->library('form_validation');
 
 		$data['title'] = 'Search patient';
+		$content=array();
 
 		$this->form_validation->set_rules('search_criteria', 'Search Criteria', 'required');
 
 		if($this->form_validation->run() === FALSE)
 		{
-			$this->load->view('templates/header', $data);
-			$this->load->view('Patients_list/SearchPatient_Simple', $data);
-			$this->load->view('templates/footer', $data);
+			// $this->load->view('templates/header', $data);
+			// $this->load->view('Patients_list/SearchPatient_Simple', $data);
+			// $this->load->view('templates/footer', $data);
+			$content['view']='Patients_list/SearchPatient_Simple';
+			$content['data'] = $data;
+			$this->load->view('layouts/patients',$content);
 		} 
 		else
 		{
@@ -88,12 +109,17 @@ class Patients_list extends CI_Controller{
 			switch ($searchType) {
 				case 'SIMPLE_SEARCH':
 					$data['patients'] = $this->patients_model->search_patient();
-					$this->load->view('templates/header', $data);
-					$this->load->view('Patients_list/ListPatientsFound', $data);
-					$this->load->view('templates/footer', $data);
+					// // $this->load->view('templates/header', $data);
+					// // $this->load->view('Patients_list/ListPatientsFound', $data);
+					// // $this->load->view('templates/footer', $data);
+					// $content['view']='Patients_list/ListPatientsFound';
+					// $content['data'] = $data;
+					// $this->load->view('layouts/patients',$content);		
+					$this->displaySearchResult($content, $data);			
 					break;
 				case 'ADVANCED_SEARCH':
-					redirect('patients_list/search_patient_advanced');					// $data['title'] = 'Search patient (advanced)';
+					redirect('patients_list/search_patient_advanced');					
+					// $data['title'] = 'Search patient (advanced)';
 					// $this->load->view('templates/header', $data);
 					// $this->load->view('Patients_list/SearchPatient_Advanced', $data);
 					// $this->load->view('templates/footer', $data);
@@ -105,6 +131,37 @@ class Patients_list extends CI_Controller{
 					echo 'Invalid search type! <br/>';
 					break;
 			}
+		}
+	}
+
+	public function search_patient_advanced()	
+	{
+		$this->load->helper('form');
+		$this->load->library('form_validation');
+
+		$data['title'] = 'Search patient (advanced)';
+		$content=array();
+		
+		$searchType = $this->get_SearchType();
+		if($searchType == 'ADD_NEW_PATIENT')
+		{
+			redirect('patients_list/insert_new_patient');
+		}
+		
+		$this->form_validation->set_rules('search_field[]', 'Search Criteria', 'required');	
+		if($this->form_validation->run() === FALSE)
+		{
+			// $this->load->view('templates/header', $data);
+			// $this->load->view('Patients_list/SearchPatient_Advanced', $data);
+			// $this->load->view('templates/footer', $data);
+			$content['view']='Patients_list/SearchPatient_Advanced';
+			$content['data']=$data;
+			$this->load->view('layouts/patients',$content);	
+		} 	
+		else
+		{
+			$data['patients'] = $this->patients_model->search_patient_advanced();
+			$this->displaySearchResult($content, $data);
 		}
 	}
 
@@ -141,39 +198,9 @@ class Patients_list extends CI_Controller{
 		}
 	}
 
-	public function search_patient_advanced()	
-	{
-		$this->load->helper('form');
-		$this->load->library('form_validation');
-
-		$data['title'] = 'Search patient (advanced)';
-		
-		$searchType = $this->get_SearchType();
-		if($searchType == 'ADD_NEW_PATIENT')
-		{
-			redirect('patients_list/insert_new_patient');
-		}
-		
-		$this->form_validation->set_rules('search_field[]', 'Search Criteria', 'required');	
-		if($this->form_validation->run() === FALSE)
-		{
-			$this->load->view('templates/header', $data);
-			$this->load->view('Patients_list/SearchPatient_Advanced', $data);
-			$this->load->view('templates/footer', $data);
-		} 	
-		else
-		{
-			$data['patients'] = $this->patients_model->search_patient_advanced();
-			$this->load->view('templates/header', $data);
-			$this->load->view('Patients_list/ListPatientsFound', $data);
-			$this->load->view('templates/footer', $data);
-			// echo "From advanced search";
-		}
-	}
-
 	public function list_patients_found()
 	{
-		// $this->patients_model->
+		// may or may not be implemented, should be discused with team
 	}
 
 	public function getCitiesList()
