@@ -10,6 +10,8 @@ class Patients_list extends CI_Controller{
 		parent::__construct();
 		$this->load->model('patients_model');
 		$this->load->helper('url_helper');
+		//load my DropDown library
+		$this->load->helper('DropDownMenu');
 	}
 
 	public function insert_new_patient()
@@ -165,6 +167,36 @@ class Patients_list extends CI_Controller{
 		}
 	}
 
+	public function list_patients_found()
+	{
+		// may or may not be implemented, should be discused with team
+	}
+
+	public function getCitiesList()
+	{	
+		$county_id = $this->input->get('county');	
+		$cities_list=$this->patients_model->getCitiesList($county_id);
+
+		header('Content-Type: application/json');
+	    echo json_encode( $cities_list );	
+	}
+
+	public function insertNewCity()
+	{
+		// $this->load->helper('form');
+		// $this->load->library('form_validation');
+
+		$newCity=$this->input->get('city');
+		$county=$this->input->get('county');
+
+		$cities_list=$this->patients_model->insertNewCity($county,$newCity);
+
+		header('Content-Type: application/json');
+	    echo json_encode( $cities_list );
+	}
+
+/* Old and now unused*/
+/*
 	public function search_patient_advanced2()	
 	{
 		$this->load->helper('form');
@@ -197,33 +229,6 @@ class Patients_list extends CI_Controller{
 			}
 		}
 	}
-
-	public function list_patients_found()
-	{
-		// may or may not be implemented, should be discused with team
-	}
-
-	public function getCitiesList()
-	{	
-		$county_id = $this->input->get('county');	
-		$cities_list=$this->patients_model->getCitiesList($county_id);
-
-		header('Content-Type: application/json');
-	    echo json_encode( $cities_list );	
-	}
-
-	public function insertNewCity()
-	{
-		// $this->load->helper('form');
-		// $this->load->library('form_validation');
-
-		$newCity=$this->input->get('city');
-		$county=$this->input->get('county');
-
-		$cities_list=$this->patients_model->insertNewCity($county,$newCity);
-
-		header('Content-Type: application/json');
-	    echo json_encode( $cities_list );
-	}
+*/
 
 }

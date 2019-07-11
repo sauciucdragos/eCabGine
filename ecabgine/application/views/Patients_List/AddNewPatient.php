@@ -20,11 +20,11 @@
 		<!-- <select name="county" id="selectCounty" onchange="getCities(this)"> -->
 		<select name="county" id="selectCounty" onchange="getCities(this.value)">
 		<?php
-			foreach ($county_list as $county)
-			{
-				// echo '<option value="'.$county['id_county'].'"> '.$county['id_county'].' '.$county['county'].' </option>';
-				echo '<option value="'.$county['id_county'].'"> '.$county['county'].' </option>';
-			}
+			// foreach ($county_list as $county)
+			// {
+			// 	echo '<option value="'.$county['return_value'].'"> '.$county['display_value'].' </option>';
+			// }
+			buildDropDownOptions($county_list);
 		?>
 		</select><br/> 
 

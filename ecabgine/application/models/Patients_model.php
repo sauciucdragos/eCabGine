@@ -129,7 +129,7 @@ WHERE patient.first_name = 'Ana';
 
 	public function get_county_list()
 	{
-		$this->db->select('id_county, county'); //to be sure about order
+		$this->db->select('id_county as return_value, county as display_value');
 		$query = $this->db->get('county');
 		
 		return $query->result_array();
