@@ -14,7 +14,7 @@ class Patients_list extends CI_Controller{
 		$this->load->helper('DropDownMenu');
 	}
 
-	public function insert_new_patient()
+	public function insert_new_patient($noValidate=NULL)
 	{
 		$this->load->helper('form');
 		$this->load->library('form_validation');
@@ -36,6 +36,13 @@ class Patients_list extends CI_Controller{
 		$this->form_validation->set_rules('email', 'E-mail', 'trim|required|valid_email');
 		$this->form_validation->set_rules('cnp', 'CNP', 'required');
 		$this->form_validation->set_rules('marital_status', 'Marital status', 'required');
+
+		if ($noValidate != NULL){
+			$content['view']='Patients_list/AddNewPatient';
+			$content['data'] = $data;
+			$this->load->view('layouts/patients',$content);
+			return;
+		}
 		
 
 		if($this->form_validation->run() === FALSE)
@@ -50,7 +57,11 @@ class Patients_list extends CI_Controller{
 		else
 		{
 			$this->patients_model->insert_patient();
-			$this->load->view('Patients_list/success');
+			// $this->load->view('Patients_list/success');
+			$content['view']='Patients_list/success';
+			$data['title']='Patient added';
+			$content['data']=$data;
+			$this->load->view('layouts/patients',$content);
 		}
 		
 	}
@@ -127,7 +138,9 @@ class Patients_list extends CI_Controller{
 					// $this->load->view('templates/footer', $data);
 					break;
 				case 'ADD_NEW_PATIENT':
-					redirect('patients_list/insert_new_patient');
+					// redirect('patients_list/insert_new_patient');
+					// $this->form_validation->_field_data = array();
+					$this->insert_new_patient('novalidate');
 					break;
 				default:
 					echo 'Invalid search type! <br/>';
@@ -147,7 +160,9 @@ class Patients_list extends CI_Controller{
 		$searchType = $this->get_SearchType();
 		if($searchType == 'ADD_NEW_PATIENT')
 		{
-			redirect('patients_list/insert_new_patient');
+			// redirect('patients_list/insert_new_patient');
+			$this->insert_new_patient('novalidate');
+			return;
 		}
 		
 		$this->form_validation->set_rules('search_field[]', 'Search Criteria', 'required');	

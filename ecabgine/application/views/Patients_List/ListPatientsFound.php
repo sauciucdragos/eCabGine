@@ -40,7 +40,7 @@
 	<br>
 	
 	<div>
-		<?php echo form_open('Patients_List/insert_new_patient'); ?>
+		<?php echo form_open('Patients_List/insert_new_patient/noValidate'); ?>
 
 <!-- 		<h4> If no suitable patient is found, you can go and add new patient </h4> -->
 		<table>
