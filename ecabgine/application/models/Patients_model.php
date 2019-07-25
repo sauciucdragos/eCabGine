@@ -4,20 +4,20 @@ class Patients_model extends CI_Model {
 	private $sql_patientData="id_patient, CONCAT(last_name, ', ', first_name) AS NAME, birth_date, cnp, concat(county, ', ', city, ', ', address) AS address, email, phone_number";
 
 	public function __construct(){
-		// $this->load->database();
-		$config['hostname'] = 'localhost';
-		$config['username'] = 'root';
-		$config['password'] = '';
-		$config['database'] = 'ecabgine';
-		$config['dbdriver'] = 'mysqli';
-		$config['dbprefix'] = '';
-		$config['pconnect'] = TRUE;
-		$config['db_debug'] = TRUE;
-		$config['cache_on'] = FALSE;
-		$config['cachedir'] = '';
-		$config['char_set'] = 'utf8';
-		$config['dbcollat'] = 'utf8_general_ci';
-		$this->load->database($config);
+		$this->load->database();
+		// $config['hostname'] = 'localhost';
+		// $config['username'] = '***';
+		// $config['password'] = '***';
+		// $config['database'] = '***';
+		// $config['dbdriver'] = 'mysqli';
+		// $config['dbprefix'] = '';
+		// $config['pconnect'] = TRUE;
+		// $config['db_debug'] = TRUE;
+		// $config['cache_on'] = FALSE;
+		// $config['cachedir'] = '';
+		// $config['char_set'] = 'utf8';
+		// $config['dbcollat'] = 'utf8_general_ci';
+		// $this->load->database($config);
 	}
 
 	public function get_patient($id_patient=NULL)
