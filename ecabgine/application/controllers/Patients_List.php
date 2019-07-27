@@ -96,7 +96,7 @@ class Patients_list extends CI_Controller{
 		$this->load->view('layouts/patients',$content);
 	}
 
-	public function search_patient_simple()	
+	public function searchPatientSimple()	
 	{
 		$this->load->helper('form');
 		$this->load->library('form_validation');
@@ -130,7 +130,7 @@ class Patients_list extends CI_Controller{
 					$this->displaySearchResult($content, $data);			
 					break;
 				case 'ADVANCED_SEARCH':
-					redirect('patients_list/search_patient_advanced');					
+					redirect('patients_list/searchPatientAdvanced');					
 					// $data['title'] = 'Search patient (advanced)';
 					// $this->load->view('templates/header', $data);
 					// $this->load->view('Patients_list/SearchPatient_Advanced', $data);
@@ -148,7 +148,7 @@ class Patients_list extends CI_Controller{
 		}
 	}
 
-	public function search_patient_advanced()	
+	public function searchPatientAdvanced()	
 	{
 		$this->load->helper('form');
 		$this->load->library('form_validation');
@@ -176,7 +176,7 @@ class Patients_list extends CI_Controller{
 		} 	
 		else
 		{
-			$data['patients'] = $this->patients_model->search_patient_advanced();
+			$data['patients'] = $this->patients_model->searchPatientAdvanced();
 			$this->displaySearchResult($content, $data);
 		}
 	}
@@ -211,7 +211,7 @@ class Patients_list extends CI_Controller{
 
 /* Old and now unused*/
 /*
-	public function search_patient_advanced2()	
+	public function searchPatientAdvanced2()	
 	{
 		$this->load->helper('form');
 		$this->load->library('form_validation');
@@ -235,7 +235,7 @@ class Patients_list extends CI_Controller{
 			} 	
 			else
 			{
-				$data['patients'] = $this->patients_model->search_patient_advanced();
+				$data['patients'] = $this->patients_model->searchPatientAdvanced();
 				$this->load->view('templates/header', $data);
 				$this->load->view('Patients_list/ListPatientsFound', $data);
 				$this->load->view('templates/footer', $data);

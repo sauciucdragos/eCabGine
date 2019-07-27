@@ -2,7 +2,7 @@
 
 <?php echo validation_errors(); ?>
 
-<?php echo form_open('Patients_List/search_patient_advanced'); ?>
+<?php echo form_open('Patients_List/searchPatientAdvanced'); ?>
 
 	<input type="checkbox" name="search_field[]" value="first name"> Use first name
 	<input type="text" name="txt_first_name"><br/>

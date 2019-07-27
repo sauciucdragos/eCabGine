@@ -2,7 +2,7 @@
 
 <?php echo validation_errors(); ?>
 
-<?php echo form_open('Patients_List/search_patient_simple'); ?>
+<?php echo form_open('Patients_List/searchPatientSimple'); ?>
 
 	<label for="search_criteria">Select search criteria</label>
 	<select name="search_criteria">
@@ -25,8 +25,8 @@
 </form>
 <!-- latter we should choose to use or not a menu built on an unordered list -->
 <!-- <ul class="hmenu">
-	<li><a href="http://[::1]/eCabGine/ecabgine/index.php/Patients_List/search_patient_advanced">Advanced search</a></li>
+	<li><a href="http://[::1]/eCabGine/ecabgine/index.php/Patients_List/searchPatientAdvanced">Advanced search</a></li>
 	<li><a href="http://[::1]/eCabGine/ecabgine/index.php/patients_list/insert_new_patient">Add new patient</a></li>
 </ul> -->
 
-<p class="smenu">You can also do an <a href="http://[::1]/eCabGine/ecabgine/index.php/patients_list/search_patient_advanced">advanced search</a> or <a href="http://[::1]/eCabGine/ecabgine/index.php/patients_list/insert_new_patient">add a new patient</a></p> 
+<p class="smenu">You can also do an <a href="http://[::1]/eCabGine/ecabgine/index.php/patients_list/searchPatientAdvanced">advanced search</a> or <a href="http://[::1]/eCabGine/ecabgine/index.php/patients_list/insert_new_patient">add a new patient</a></p> 

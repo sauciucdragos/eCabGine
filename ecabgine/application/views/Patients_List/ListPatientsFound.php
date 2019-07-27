@@ -4,8 +4,6 @@
 
 	<h2> List of pacients who satisfies the search criteria:</h2>
 
-	<?php echo form_open('Consult/consult');?>
-
 		<table>
 			<tr>
 				<th>PatientID</th>
@@ -28,32 +26,23 @@
 				}
 
 				$idp=$patient_data['id_patient'];
-				// echo '<td><button type="button" name="patientId'.$idp.'" id="button'.$idp.'"'.' value="'.$idp.'"> Consult</button>';
-				echo '<td><input type="submit" name="patientId'.$idp.'" id="button'.$idp.'"'.' value="Consult">';
-
+				// // echo '<td><button type="button" name="patientId'.$idp.'" id="button'.$idp.'"'.' value="'.$idp.'"> Consult</button>';
+				// echo '<td><input type="submit" name="patientId'.$idp.'" id="button'.$idp.'"'.' value="Consult">';
+				echo '<td class="smenu"><a href="#">Consult</a></td>';
 				echo '</tr>';
 			}
 			?>
-		</table>
-	</form>
-	</div>
-	<br>
-	
-	<div>
-		<?php echo form_open('Patients_List/insert_new_patient/noValidate'); ?>
-
-<!-- 		<h4> If no suitable patient is found, you can go and add new patient </h4> -->
-		<table>
+			<tr><td colspan="8"></td> </tr>
+			<tr><td colspan="8"></td> </tr>
 			<tr>
-				<td><h4>If no suitable patient is found, you can go to add new patient</h4> </td>
-				<td><input type="submit" name="add_new_patient" value="Add new patient"></td>
-				
+				<td colspan="7" ><h4> If no suitable patient is found, you can add a new patient</h4></td>
+				<!-- <td><input type="submit" name="add_new_patient" value="Add new patient"></td> -->
+				<td class="smenu"><a href="http://[::1]/eCabGine/ecabgine/index.php/patients_list/insert_new_patient">Add new patient</a></td>
 			</tr>
 		</table>
-
-		
-	</form>
 	</div>
+
+	
 
 
 
