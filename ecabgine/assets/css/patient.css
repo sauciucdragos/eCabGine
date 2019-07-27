@@ -1,0 +1,11 @@
+
+/*Horizontal Menu, Vertical Menu, Simple Menu*/
+.hmenu li{
+	display: inline-block;
+	list-style-type: none;
+}
+
+.hmenu,.smenu a{
+	text-decoration: none;
+}
+

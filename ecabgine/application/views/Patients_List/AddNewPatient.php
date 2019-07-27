@@ -5,16 +5,16 @@
 <?php echo form_open('Patients_List/insert_new_patient'); ?>
 
 		<label for="first_name">First Name</label>
-		<input type="text" name="first_name"><br />		
+		<input type="text" name="first_name" value="<?php echo set_value('first_name'); ?>"><br />		
 
 		<label for="last_name">Last Name</label>
-		<input type="text" name="last_name"> <br>
+		<input type="text" name="last_name" value="<?php echo set_value('last_name'); ?>"> <br>
 
 		<label for="birth_day">Birth day</label>
-		<input type="date" name="birth_day"></input><br />	
+		<input type="date" name="birth_day" value="<?php echo set_value('birth_day'); ?>"></input><br />	
 
 		<label for="patient_id">Patient ID</label>
-		<input type="text" name="patient_id"><br />
+		<input type="text" name="patient_id" value="<?php echo set_value('patient_id'); ?>"><br />
 
 		<label for="county">Select county</label>
 		<!-- <select name="county" id="selectCounty" onchange="getCities(this)"> -->
@@ -39,25 +39,25 @@
 		<br>                                    <!--alternative event: onmouseup -->
 
 		<label for="address">Address</label>
-		<input type="text" name="address"><br />	
+		<input type="text" name="address" value="<?php echo set_value('address'); ?>"><br />	
 
 		<label for="ocupation">Ocupation</label>
-		<input type="text" name="ocupation"><br />
+		<input type="text" name="ocupation" value="<?php echo set_value('ocupation'); ?>"><br />
 
 		<label for="job">Job</label>
-		<input type="text" name="job"><br/>	
+		<input type="text" name="job" value="<?php echo set_value('job'); ?>"><br/>	
 
 		<label for="phone">Phone</label>
-		<input type="text" name="phone"><br />	
+		<input type="text" name="phone" value="<?php echo set_value('phone'); ?>"><br />	
 
 		<label for="email">E-mail</label>
-		<input type="text" name="email"><br />
+		<input type="text" name="email" value="<?php echo set_value('email'); ?>"><br />
 
 		<label for="cnp">CNP</label>
-		<input type="number" name="cnp"><br />	
+		<input type="number" name="cnp" value="<?php echo set_value('cnp'); ?>"><br />	
 
 		<label for="marital_status">Marital status</label>
-		<input type="text" name="marital_status"><br />	
+		<input type="text" name="marital_status" value="<?php echo set_value('marital_status'); ?>"><br />	
 
 
 		<input type="submit" name="add-patient" value="Add new patient" />

@@ -17,6 +17,12 @@
 	<input type="text" name="txt_id_patient"><br/>
 	
 	<input type="submit" name="advanced_search" value="Search">
-	<input type="submit" name="add_new_patient" value="Add new patient">
+	<!-- <input type="submit" name="add_new_patient" value="Add new patient"> -->
 
 </form>
+
+<!-- <ul class="hmenu">
+	<li><a href="http://[::1]/eCabGine/ecabgine/index.php/patients_list/insert_new_patient">Add new patient</a></li>
+</ul> -->
+<br>
+<p class="smenu">You can also <a href="http://[::1]/eCabGine/ecabgine/index.php/patients_list/insert_new_patient">add a new patient</a></p> 

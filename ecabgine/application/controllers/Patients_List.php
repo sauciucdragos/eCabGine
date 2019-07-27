@@ -14,7 +14,7 @@ class Patients_list extends CI_Controller{
 		$this->load->helper('DropDownMenu');
 	}
 
-	public function insert_new_patient($noValidate=NULL)
+	public function insert_new_patient()
 	{
 		$this->load->helper('form');
 		$this->load->library('form_validation');
@@ -37,12 +37,12 @@ class Patients_list extends CI_Controller{
 		$this->form_validation->set_rules('cnp', 'CNP', 'required');
 		$this->form_validation->set_rules('marital_status', 'Marital status', 'required');
 
-		if ($noValidate != NULL){
-			$content['view']='Patients_list/AddNewPatient';
-			$content['data'] = $data;
-			$this->load->view('layouts/patients',$content);
-			return;
-		}
+		// if ($noValidate != NULL){
+		// 	$content['view']='Patients_list/AddNewPatient';
+		// 	$content['data'] = $data;
+		// 	$this->load->view('layouts/patients',$content);
+		// 	return;
+		// }
 		
 
 		if($this->form_validation->run() === FALSE)
@@ -57,7 +57,6 @@ class Patients_list extends CI_Controller{
 		else
 		{
 			$this->patients_model->insert_patient();
-			// $this->load->view('Patients_list/success');
 			$content['view']='Patients_list/success';
 			$data['title']='Patient added';
 			$content['data']=$data;
@@ -139,7 +138,7 @@ class Patients_list extends CI_Controller{
 					break;
 				case 'ADD_NEW_PATIENT':
 					// redirect('patients_list/insert_new_patient');
-					// $this->form_validation->_field_data = array();
+					$this->form_validation->_field_data = array();
 					$this->insert_new_patient('novalidate');
 					break;
 				default:
@@ -161,7 +160,7 @@ class Patients_list extends CI_Controller{
 		if($searchType == 'ADD_NEW_PATIENT')
 		{
 			// redirect('patients_list/insert_new_patient');
-			$this->insert_new_patient('novalidate');
+			$this->insert_new_patient();
 			return;
 		}
 		
